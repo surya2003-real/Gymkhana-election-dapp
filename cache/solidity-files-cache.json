@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\sgoel\\OneDrive\\Documents\\GitHub\\assignment4web3\\contracts\\Election.sol": {
-      "lastModificationDate": 1690179319549,
-      "contentHash": "7802da03f7d6b01125f402bc3e0a69a2",
+    "/home/windreaper/Documents/assignment4web3/contracts/Election.sol": {
+      "lastModificationDate": 1690200332092,
+      "contentHash": "2a1d6caaea2e804e73dd3536e7364a89",
       "sourceName": "contracts/Election.sol",
       "solcConfig": {
         "version": "0.8.4",

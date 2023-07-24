@@ -43,7 +43,7 @@ contract Election{
 			"Only the election leader can grant voting rights."
 		);
 		require(!voters[voter].registered, "Voter is already registered.");
-		
+
 		voters[voter].registered = true;
 	}
 
@@ -55,7 +55,7 @@ contract Election{
 		);
 		require(
 			!voters[msg.sender].voted[position][preference],
-			"Voter has already voted for this position and preference."
+			"You have already voted for this position and preference."
 		);
 		require(
 			candidate < candidates[position].length,
@@ -73,7 +73,7 @@ contract Election{
 
 		require(
 			valid,
-			"Voter has not voted for the previous preference(s)."
+			"You have not voted for the previous preference(s)."
 		);
 
 		voters[msg.sender].voted[position][preference] = true;
