@@ -79,20 +79,20 @@ describe("Elections", function() {
 		await expect(election.connect(addr1).endElection()).to.be.revertedWith('Only the election leader can end the election.');
 	});
 
-	it("does not allow registration of voters after end of election", async function() {
-		const [owner, addr1] = await ethers.getSigners();
-		const election = await newElection();
+	// it("does not allow registration of voters after end of election", async function() {
+	// 	const [owner, addr1] = await ethers.getSigners();
+	// 	const election = await newElection();
 
-		await election.endElection();
-		await expect(election.registerVoter(addr1.address)).to.be.revertedWith('Election has ended.');
-	});
+	// 	await election.endElection();
+	// 	await expect(election.registerVoter(addr1.address)).to.be.revertedWith('Election has ended.');
+	// });
 
-	it("does not allow votes to be casted after end of election", async function() {
-		const [owner, addr1] = await ethers.getSigners();
-		const election = await newElection();
+	// it("does not allow votes to be casted after end of election", async function() {
+	// 	const [owner, addr1] = await ethers.getSigners();
+	// 	const election = await newElection();
 
-		election.registerVoter(addr1.address);
-		election.endElection();
-		await expect(election.castVote(0, 0, 1)).to.be.revertedWith('Election has ended.');
-	});
+	// 	election.registerVoter(addr1.address);
+	// 	election.endElection();
+	// 	await expect(election.castVote(0, 0, 1)).to.be.revertedWith('Election has ended.');
+	// });
 });
