@@ -2,8 +2,8 @@
 pragma solidity ^0.8.4;
 
 contract Election{
-	bool public ended = false;
 	uint8[3] val = [5, 3, 1];
+	uint256 public endTime;
 
 	struct Voter {
 		bool registered;
@@ -25,7 +25,11 @@ contract Election{
 	// PSG, 4 gen secs - 5 positions total
 	// candidates[0] => all candidates contesting for president
 
-	constructor(string[][5] memory _candidateNames){
+	constructor(string[][5] memory _candidateNames, uint256 _endTime) {
+		require(
+			block.timestamp < _endTime, "End time must be in the future."
+		);
+
 		leader = msg.sender;
 		voters[leader].registered = true;
 
@@ -34,10 +38,12 @@ contract Election{
 				candidates[i].push(Candidate({name: _candidateNames[i][j], votes: 0}));
 			}
 		}
+
+		endTime = _endTime;
 	}
 
 	function registerVoter(address voter) external {
-		require(!ended, "Election has ended.");
+		require(block.timestamp < endTime, "Election has ended.");
 		require(
 			msg.sender == leader,
 			"Only the election leader can grant voting rights."
@@ -48,7 +54,7 @@ contract Election{
 	}
 
 	function castVote(uint8 position, uint8 preference, uint8 candidate) external {
-		require(!ended, "Election has ended.");
+		require(block.timestamp < endTime, "Election has ended.");
 		require(
 			voters[msg.sender].registered,
 			"Only registered voters can vote."
@@ -82,6 +88,10 @@ contract Election{
 	}
 
 	function winningCandidate() public view returns (uint8[5] memory winningCandidates_){
+		require(
+			block.timestamp >= endTime,
+			"Election has not ended yet."
+		);
 		uint8[5] memory winners;
 		for(uint8 position = 0; position < 5; position++){
 			uint16 max = 0;
@@ -103,15 +113,6 @@ contract Election{
 
 		return winnersName_;
 	}
-
-	function endElection() external {
-		require(
-			msg.sender == leader,
-			"Only the election leader can end the election."
-		);
-
-		ended = true;
-	}
 }
 
 /*
@@ -132,6 +133,5 @@ contract Election{
 /*
 TODO: 
 1. Add support for voting for NOTA
-2. Add support login for voters
-3. Add support for ending election automatically
+2. Add support for ending election automatically
 */
