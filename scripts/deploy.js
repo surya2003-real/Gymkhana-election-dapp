@@ -7,13 +7,14 @@
 const hre = require("hardhat");
 
 async function main() {
-
-  const election = await hre.ethers.deployContract("Election");
-
-  await election.waitForDeployment();
+  let candidates=[["Dhwanit", "Aarush", "bob", "charlie"], ["Arnav", "Naman", "alice", "delta"], ["Avi", "Devansh", "Sheeshram", "gamma"], ["Nishika", "omega", "zeta", "eta"], ["alpha", "beta", "theta", "iota"]];
+  
+  const Election = await hre.ethers.getContractFactory("Election");
+  const election = await Election.deploy(candidates);
+  await election.deployed();
 
   console.log(
-	`election deployed to ${election.target}`
+    `Election deployed to ${election.address}`
   );
 }
 
