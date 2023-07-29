@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import "./App.css";
+import Form from './components/Form.js';
+import NavBar from './components/NavBar.js';
+import Table from './components/Table.js';
+import Register from './components/Register.js';
+import {Routes, Route} from 'react-router-dom';
 const contractAddress = "0xc136fdB82520909D1cCfac902b7845F40768e4b8";
 const contractABI = [
   {
@@ -115,7 +120,9 @@ function App() {
   };
   return (
     <div>
-      <h1>Election Dapp</h1>
+      <NavBar/>
+      <body>
+      {/* <h1>Election Dapp</h1>
       <div>
         <input
           type="string"
@@ -151,8 +158,14 @@ function App() {
           Store
         </button>
         {error && <p style={{ color: "red" }}>{error}</p>}
-      </div>
+      </div> */}
+      <Routes>
+        <Route path="/" element={<Form/>}/>
+        <Route path="/register" element={<Register/>}/>
+      </Routes>
+      </body>
     </div>
+
   );
 }
 

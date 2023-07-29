@@ -53,45 +53,39 @@ contract Election{
 		voters[voter].registered = true;
 	}
 
-	function castVote(uint8 position, uint8 preference, uint8 candidate) external {
+	function castVote(uint8 position, uint8 preference1, uint8 preference2, uint8 preference3) external {
 		require(block.timestamp < endTime, "Election has ended.");
 		require(
 			voters[msg.sender].registered,
 			"Only registered voters can vote."
 		);
 		require(
-			!voters[msg.sender].voted[position][preference],
-			"You have already voted for this position and preference."
+			!voters[msg.sender].voted[position][0],
+			"You have already voted for this position."
 		);
 		require(
-			candidate < candidates[position].length,
+			preference1 < candidates[position].length && preference2 < candidates[position].length && preference3 < candidates[position].length,
 			"Candidate does not exist."
 		);
-		
-		bool valid = true;
 
-		for(uint8 i = 0; i < preference; i++){
-			if(voters[msg.sender].voted[position][i] == false){
-				valid = false;
-				break;
-			}
-		}
+		voters[msg.sender].voted[position][0] = true;
+		voters[msg.sender].vote[position][0] = preference1;
+		candidates[position][preference1].votes += val[0];
 
-		require(
-			valid,
-			"You have not voted for the previous preference(s)."
-		);
+        voters[msg.sender].voted[position][1] = true;
+		voters[msg.sender].vote[position][1] = preference2;
+		candidates[position][preference2].votes += val[1];
 
-		voters[msg.sender].voted[position][preference] = true;
-		voters[msg.sender].vote[position][preference] = candidate;
-		candidates[position][candidate].votes += val[preference];
+        voters[msg.sender].voted[position][2] = true;
+		voters[msg.sender].vote[position][2] = preference3;
+		candidates[position][preference3].votes += val[2];
 	}
 
 	function winningCandidate() public view returns (uint8[5] memory winningCandidates_){
-		require(
-			block.timestamp >= endTime,
-			"Election has not ended yet."
-		);
+		// require(
+		// 	block.timestamp >= endTime,
+		// 	"Election has not ended yet."
+		// );
 		uint8[5] memory winners;
 		for(uint8 position = 0; position < 5; position++){
 			uint16 max = 0;
