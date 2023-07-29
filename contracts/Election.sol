@@ -127,5 +127,4 @@ contract Election{
 /*
 TODO: 
 1. Add support for voting for NOTA
-2. Add support for ending election automatically
 */
