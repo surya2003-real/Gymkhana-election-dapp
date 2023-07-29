@@ -56,5 +56,14 @@ Used to deploy the website to github pages directly.
 Internally it first creates the `build` folder and then updates gh-pages branch on github.
 
 ## Contributors
-Divyansh Garg - Smart Contract and Hardhat testing codes
-Suryansh Goel - Deploying Smart Contract and Front end application and its integration with solidity
+**Divyansh Garg** - Smart Contract and Hardhat testing codes\
+**Suryansh Goel** - Deploying Smart Contract and Front end application and its integration with solidity
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
