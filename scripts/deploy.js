@@ -7,7 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  let candidates=[["Dhwanit", "Aarush", "bob", "charlie"], ["Arnav", "Naman", "alice", "delta"], ["Avi", "Devansh", "Sheeshram", "gamma"], ["Nishika", "omega", "zeta", "eta"], ["alpha", "beta", "theta", "iota"]];
+  let candidates=[["Dhwanit", "Aarush", "bob", "charlie"], ["Arnav", "Naman", "alice", "delta"], ["Avi", "Devansh", "Sheeshram", "gamma"], ["Nishika", "omega", "zeta", "eta"], ["Kaustubh", "beta", "theta", "iota"]];
   let unlockTime = Math.round(Date.now() / 1000) + 120000; // Two minutes from now
   const Election = await hre.ethers.getContractFactory("Election");
   const election = await Election.deploy(candidates, unlockTime);

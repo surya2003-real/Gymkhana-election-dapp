@@ -81,26 +81,17 @@ contract Election{
 		candidates[position][preference3].votes += val[2];
 	}
 
-	function winningCandidate() public view returns (uint8[5] memory winningCandidates_){
-		// require(
-		// 	block.timestamp >= endTime,
-		// 	"Election has not ended yet."
-		// );
-		uint8[5] memory winners;
+	function winningCandidatesName() external view returns(string[5] memory winnersName_){
+        uint8[5] memory winners;
 		for(uint8 position = 0; position < 5; position++){
-			uint16 max = 0;
+			int16 max = -1;
 			for(uint8 i = 0; i < candidates[position].length; i++){
-				if(candidates[position][i].votes > max){
-					max = candidates[position][i].votes;
+				if(int16(candidates[position][i].votes) > max){
+					max = int16(candidates[position][i].votes);
 					winners[position] = i;
 				}
 			}
 		}
-		return winners;
-	}
-
-	function winningCandidatesName() external view returns(string[5] memory winnersName_){
-		uint8[5] memory winners = winningCandidate();
 		for(uint8 position = 0; position < 5; position++){
 			winnersName_[position] = candidates[position][winners[position]].name;
 		}

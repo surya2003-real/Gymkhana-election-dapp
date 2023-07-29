@@ -37,8 +37,8 @@ const Table = () => {
     <td>eta</td>
   </tr>
   <tr>
-    <td>Senators</td>
-    <td>alpha</td>
+    <td>General Secretary MnC</td>
+    <td>Kaustubh</td>
     <td>beta</td>
     <td>theta</td>
     <td>iota</td>

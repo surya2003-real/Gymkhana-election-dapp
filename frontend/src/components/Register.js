@@ -1,7 +1,7 @@
 import {useState} from "react";
 import { ethers } from "ethers";
 
-const contractAddress = "0x5F9419A4239F32757c1563665d1d2cd0FfD30B2D";
+const contractAddress = "0xc84D239755e0396796455E7D3A9643FC4ccC9c78";
 const contractABI = [
   {
     "inputs": [

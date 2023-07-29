@@ -2,7 +2,7 @@ import Table from "./Table";
 import {useState} from "react";
 import { ethers } from "ethers";
 
-const contractAddress = "0x5F9419A4239F32757c1563665d1d2cd0FfD30B2D";
+const contractAddress = "0xc84D239755e0396796455E7D3A9643FC4ccC9c78";
 const contractABI = [
   {
     "inputs": [
@@ -52,7 +52,6 @@ const Form = () => {
     const [inputValue21, setInputValue21] = useState("");
     const [inputValue22, setInputValue22] = useState("");
     const [inputValue23, setInputValue23] = useState("");
-    const [inputValue3, setInputValue3] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const castvote = async () => {
@@ -70,6 +69,9 @@ const Form = () => {
           const transaction = await contract.castVote(inputValue1, inputValue21, inputValue22, inputValue23);
           await transaction.wait();
           setInputValue1("");
+          setInputValue21("");
+          setInputValue22("");
+          setInputValue23("");
           setLoading(false);
         } catch (error) {
           console.error("Error adding voter", error);
