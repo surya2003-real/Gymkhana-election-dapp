@@ -7,9 +7,9 @@ const contractABI = [
     "name": "winningCandidatesName",
     "outputs": [
       {
-        "internalType": "string[5] memory",
+        "internalType": "string[5]",
         "name": "winnersName_",
-        "type": "string[5] memory"
+        "type": "string[5]"
       }
     ],
     "stateMutability": "view",

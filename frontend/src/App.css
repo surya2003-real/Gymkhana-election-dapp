@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #111;
-  background-repeat: no-repeat;
+  background-image: url("./assets/img/electionbg3.jpg");
+  background-repeat: cover;
 }
 
 .signupSection {
@@ -272,5 +272,32 @@ tbody {
 }
 
 .register {
-  margin-top: 100px;
+  color: #fff;
+  font-size: 35px;
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  text-shadow: 2px 2px #121212;
+}
+.results{
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 35px;
+  text-shadow: 2px 2px #121212;
+}
+ .contact{
+  color: #eedfdf;
+  font-size: 40px;
+  position: absolute;
+	top: 35%;
+	left: 35%;
+  text-shadow: 2px 2px #121212;
+ }
+
+ .contact h1{
+  font-size: 60px;
 }

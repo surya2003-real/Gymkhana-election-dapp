@@ -74,6 +74,7 @@ const Register = () => {
   };
     return ( 
       <div className="register">
+        <h1>Register Voters (Only admin can perform this action)</h1>
         <input
           type="string"
           value={inputValue}

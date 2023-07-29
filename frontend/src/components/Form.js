@@ -86,7 +86,7 @@ const Form = () => {
     <Table/>
   </div>
   <form action="#" method="POST" className="signupForm" name="signupform">
-    <h2>Sign Up</h2>
+    <h2>Your Vote is Your Voice</h2>
     <ul className="noBullet">
       <li>
         <input
