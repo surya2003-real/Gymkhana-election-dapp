@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/Gymkhana-election-dapp/static/css/main.1898fcea.css",
-    "main.js": "/Gymkhana-election-dapp/static/js/main.f1e56c7e.js",
+    "main.css": "/Gymkhana-election-dapp/static/css/main.36fee010.css",
+    "main.js": "/Gymkhana-election-dapp/static/js/main.7f74534e.js",
+    "static/media/electionbg3.jpg": "/Gymkhana-election-dapp/static/media/electionbg3.8809439a139376aa26b5.jpg",
     "index.html": "/Gymkhana-election-dapp/index.html",
-    "main.1898fcea.css.map": "/Gymkhana-election-dapp/static/css/main.1898fcea.css.map",
-    "main.f1e56c7e.js.map": "/Gymkhana-election-dapp/static/js/main.f1e56c7e.js.map"
+    "main.36fee010.css.map": "/Gymkhana-election-dapp/static/css/main.36fee010.css.map",
+    "main.7f74534e.js.map": "/Gymkhana-election-dapp/static/js/main.7f74534e.js.map"
   },
   "entrypoints": [
-    "static/css/main.1898fcea.css",
-    "static/js/main.f1e56c7e.js"
+    "static/css/main.36fee010.css",
+    "static/js/main.7f74534e.js"
   ]
 }
