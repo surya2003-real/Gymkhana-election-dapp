@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\sgoel\\OneDrive\\Documents\\GitHub\\assignment4web3\\contracts\\Election.sol": {
-      "lastModificationDate": 1690639461779,
+      "lastModificationDate": 1690640029790,
       "contentHash": "93cb6879b727ec90eb404c45ce6b2656",
       "sourceName": "contracts/Election.sol",
       "solcConfig": {
@@ -25,6 +25,9 @@
                 "ast"
               ]
             }
+          },
+          "metadata": {
+            "useLiteralContent": false
           }
         }
       },

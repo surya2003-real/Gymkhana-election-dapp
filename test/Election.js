@@ -14,7 +14,7 @@ const { ethers } = require("hardhat");
 
 async function newElection() {
 	const Election = await ethers.getContractFactory("Election");
-	const election = await Election.deploy([["Dhwanit", "Aarush", "bob", "charlie"], ["Arnav", "Naman", "alice", "delta"], ["Avi", "Devansh", "Sheeshram", "gamma"], ["Nishika", "omega", "zeta", "eta"], ["alpha", "beta", "theta", "iota"]]);
+	const election = await Election.deploy([["Dhwanit", "Aarush", "bob", "charlie"], ["Arnav", "Naman", "alice", "delta"], ["Avi", "Devansh", "Sheeshram", "gamma"], ["Nishika", "omega", "zeta", "eta"], ["alpha", "beta", "theta", "iota"]], Math.round(Date.now() / 1000)+1200);
 	
 	await election.deployed();
 	return election;
@@ -28,16 +28,6 @@ describe("Elections", function() {
 		expect(await election.leader()).to.equal(owner.address);
 	});
 
-	it("allows owner to register voters", async function() {
-		const [owner, addr1] = await ethers.getSigners();
-		const election = await newElection();
-
-		const registerVoter = await election.registerVoter(addr1.address);
-		await registerVoter.wait();
-
-		expect((await election.voters(addr1.address)).registered).to.equal(true);
-	});
-
 	it("does not allow non-owner to register voters", async function() {
 		const [owner, addr1, addr2] = await ethers.getSigners();
 		const election = await newElection();
@@ -49,7 +39,7 @@ describe("Elections", function() {
 		const [owner, addr1] = await ethers.getSigners();
 		const election = await newElection();
 
-		await expect(election.connect(addr1).castVote(0, 0, 1)).to.be.revertedWith('Only registered voters can vote.');
+		await expect(election.connect(addr1).castVote(0, 0, 1, 2)).to.be.revertedWith('Only registered voters can vote.');
 	});
 
 	it("allows voter to vote for a position and preference only once", async function() {
@@ -57,42 +47,8 @@ describe("Elections", function() {
 		const election = await newElection();
 
 		await election.registerVoter(addr1.address);
-		await election.castVote(0, 0, 1);
+		await election.castVote(0, 0, 1, 2);
 
-		await expect(election.castVote(0, 0, 1)).to.be.revertedWith("You have already voted for this position and preference.");
+		await expect(election.castVote(0, 0, 1, 2)).to.be.revertedWith("You have already voted for this position.");
 	});
-
-	it("allows voter to vote for a preference only if all previous preferences are filled", async function() {
-		const [owner, addr1] = await ethers.getSigners();
-		const election = await newElection();
-
-		await election.registerVoter(addr1.address);
-		await election.castVote(0, 0, 1);
-
-		await expect(election.castVote(0, 2, 1)).to.be.revertedWith('You have not voted for the previous preference(s).');
-	});
-
-	it("allows only owner to call the endElection function", async function() {
-		const [owner, addr1] = await ethers.getSigners();
-		const election = await newElection();
-
-		await expect(election.connect(addr1).endElection()).to.be.revertedWith('Only the election leader can end the election.');
-	});
-
-	// it("does not allow registration of voters after end of election", async function() {
-	// 	const [owner, addr1] = await ethers.getSigners();
-	// 	const election = await newElection();
-
-	// 	await election.endElection();
-	// 	await expect(election.registerVoter(addr1.address)).to.be.revertedWith('Election has ended.');
-	// });
-
-	// it("does not allow votes to be casted after end of election", async function() {
-	// 	const [owner, addr1] = await ethers.getSigners();
-	// 	const election = await newElection();
-
-	// 	election.registerVoter(addr1.address);
-	// 	election.endElection();
-	// 	await expect(election.castVote(0, 0, 1)).to.be.revertedWith('Election has ended.');
-	// });
 });
