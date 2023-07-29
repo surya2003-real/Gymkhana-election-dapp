@@ -15,6 +15,10 @@ Smart Contract - 0xc136fdB82520909D1cCfac902b7845F40768e4b8 on Sepolia Test Netw
 Frontend - https://surya2003-real.github.io/assignment4web3/
 
 ## User Manual
+1. Go to [Register](https://surya2003-real.github.io/Gymkhana-election-dapp/Register) and add your metamask wallet address to it.
+2. Go to [Home](https://surya2003-real.github.io/Gymkhana-election-dapp) and fill in your preferences to vote.
+
+You can only vote once for each position, so choose your candidates carefully.
 
 ## Implementation Details
 The smart contract allows the users and the organizing body to accomplish the following tasks - 
